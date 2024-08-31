@@ -37,6 +37,7 @@ export const HomeBook = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
+  perspective: 250rem;
   .book-page {
     position: absolute;
     width: 50%;
@@ -127,6 +128,7 @@ export const HomeBook = styled.div`
     right: 0;
     transform-style: preserve-3d;
     transform-origin: left;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
     .page-front,
     .page-back {
       position: absolute;
