@@ -1,14 +1,70 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HomeBook, HomeContainer, HomeCover, HomeWrapper } from "./styled";
 import "boxicons/css/boxicons.min.css";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const handleTurnPage = (turnID: any, index: number) => {
+    const element: any = document.getElementById(turnID);
+
+    if (element) {
+      if (element.classList.contains("turn")) {
+        element.classList.remove("turn");
+        setTimeout(() => {
+          element.style.zIndex = 20 - index;
+        }, 500);
+      } else {
+        element.classList.add("turn");
+        setTimeout(() => {
+          element.style.zIndex = 20 + index;
+        }, 500);
+      }
+    }
+  };
+
+  useEffect(()=>{
+    const firstAnimation = document.getElementById('first');
+    setTimeout(()=>{
+      firstAnimation?.classList.add('turn')
+    },2100)
+  },[])
+
+  useEffect(()=>{
+    const firstAnimation:any = document.getElementById('first');
+    setTimeout(()=>{
+      firstAnimation.style.zIndex = -1;
+    },2800)
+  },[])
+
+  useEffect(() => {
+    const turnElements = ['turn-3', 'turn-2', 'turn-1'];
+
+    turnElements.forEach((turnID, index) => {
+      const element:any = document.getElementById(turnID);
+      if (element) {
+        setTimeout(() => {
+          element.classList.remove('turn');
+          setTimeout(()=>{
+            element.style.zIndex = 10 + index;
+          },500)
+        }, 2300 + index * 300);
+      }
+    });
+  }, []);
+
+  // setTimeout page left
+  useEffect(()=>{
+    const pageLeft:any = document.getElementById('page-left')
+    setTimeout(()=>{
+      pageLeft.style.zIndex = -1;
+    },3200)
+  },[])
+
   return (
     <HomeContainer>
       <HomeWrapper>
-        <HomeCover className="cover-left"></HomeCover>
-        <HomeCover className="cover-right turn"></HomeCover>
+        <HomeCover className="cover-left" id="page-left"></HomeCover>
+        <HomeCover className="cover-right" id="first"></HomeCover>
         <HomeBook>
           <div className="book-page page-left">
             <div className="profile-page">
@@ -93,7 +149,11 @@ const Home = () => {
               </div>
               <span className="number-page">1</span>
               {/* next button */}
-              <span className="nextprev-btn" data-page="turn-1">
+              <span
+                className="nextprev-btn"
+                data-page="turn-1"
+                onClick={() => handleTurnPage("turn-1", 1)}
+              >
                 <i className="bx bx-chevron-right"></i>
               </span>
             </div>
@@ -144,7 +204,11 @@ const Home = () => {
               </div>
               <span className="number-page">2</span>
               {/* prev button */}
-              <span className="nextprev-btn back" data-page="turn-1">
+              <span
+                className="nextprev-btn back"
+                data-page="turn-1"
+                onClick={() => handleTurnPage("turn-1", 1)}
+              >
                 <i className="bx bx-chevron-left"></i>
               </span>
             </div>
@@ -199,7 +263,11 @@ const Home = () => {
               </div>
               <span className="number-page">3</span>
               {/* next button */}
-              <span className="nextprev-btn" data-page="turn-2">
+              <span
+                className="nextprev-btn"
+                data-page="turn-2"
+                onClick={() => handleTurnPage("turn-2", 2)}
+              >
                 <i className="bx bx-chevron-right"></i>
               </span>
             </div>
@@ -261,7 +329,11 @@ const Home = () => {
               </div>
               <span className="number-page">4</span>
               {/* prev button */}
-              <span className="nextprev-btn back" data-page="turn-2">
+              <span
+                className="nextprev-btn back"
+                data-page="turn-2"
+                onClick={() => handleTurnPage("turn-2", 2)}
+              >
                 <i className="bx bx-chevron-left"></i>
               </span>
             </div>
@@ -302,7 +374,11 @@ const Home = () => {
               </div>
               <span className="number-page">5</span>
               {/* next button */}
-              <span className="nextprev-btn" data-page="turn-3">
+              <span
+                className="nextprev-btn"
+                data-page="turn-3"
+                onClick={() => handleTurnPage("turn-3", 3)}
+              >
                 <i className="bx bx-chevron-right"></i>
               </span>
             </div>
@@ -337,7 +413,11 @@ const Home = () => {
               </div>
               <span className="number-page">6</span>
               {/* prev button */}
-              <span className="nextprev-btn back" data-page="turn-3">
+              <span
+                className="nextprev-btn back"
+                data-page="turn-3"
+                onClick={() => handleTurnPage("turn-3", 3)}
+              >
                 <i className="bx bx-chevron-left"></i>
               </span>
               <a href="#" className="back-profile">

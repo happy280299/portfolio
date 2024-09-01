@@ -11,6 +11,18 @@ export const HomeWrapper = styled.div`
   width: 66rem;
   height: 45rem;
   padding: 2rem;
+  perspective: 250rem;
+  animation: showAnimation 2s forwards;
+  @keyframes showAnimation {
+    0%,30% {
+      opacity: 0;
+      transform: rotate(-20deg)
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(0)
+    }
+  }
 `;
 export const HomeCover = styled.div`
   position: absolute;
@@ -27,8 +39,10 @@ export const HomeCover = styled.div`
     z-index: -1;
   }
   &.cover-right {
+    z-index: 10;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
     &.turn {
-      transform: rotate(180deg);
+      transform: rotateY(180deg);
     }
   }
 `;
