@@ -19,5 +19,7 @@ export const PATH_LANDING = {
   root: ROOTS_LANDING,
   landing: {
     root: path(ROOTS_LANDING, ""),
+    camera: path(ROOTS_LANDING,"camera"),
+    seCamera: path(ROOTS_LANDING,"see-camera")
   },
 };
