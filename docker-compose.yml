@@ -2,6 +2,6 @@ version: "3.8"
 services:
   frontend:
     build: ./
-    container_name: frontend_c
+    container_name: thinhtv_web
     ports:
-      - '3301:3000'
+      - '3001:3000'
